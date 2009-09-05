@@ -1,1 +1,9 @@
-15
+<table>
+  <% (1..Puzzle::DIMENSION).each do |i|  %>
+    <tr>
+      <% (1..Puzzle::DIMENSION).each do |j|  %>
+        <td><%= @puzzle.matrix[i-1, j-1] %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

@@ -101,3 +101,642 @@ Completed in 135ms (View: 116, DB: 0) | 200 OK [http://localhost/]
 Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 11:03:23) [GET]
 Rendering plays/new
 Completed in 25ms (View: 13 | 200 OK [http://localhost/]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 12:58:07) [GET]
+Rendering plays/new
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]) on line #5 of app/views/plays/new.html.erb:
+2:   <% (1..Puzzle::DIMENSION).each do |i |  %>
+3:     <tr>
+4:       <% (1..Puzzle::DIMENSION).each do |j |  %>
+5:         <td><%= @puzzle.matrix[i,j]%></td>
+6:       <% end %>
+7:     </tr>
+8:   <% end %>
+
+    /usr/lib/ruby/1.8/matrix.rb:265:in `[]'
+    app/views/plays/new.html.erb:5
+    app/views/plays/new.html.erb:4:in `each'
+    app/views/plays/new.html.erb:4
+    app/views/plays/new.html.erb:2:in `each'
+    app/views/plays/new.html.erb:2
+
+Rendered rescues/_trace (270.0ms)
+Rendered rescues/_request_and_response (52.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 12:59:24) [GET]
+
+NoMethodError (undefined method `rows' for Matrix:Class):
+  app/models/puzzle.rb:6:in `new_from_arr'
+  app/models/puzzle.rb:20:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (134.2ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:01:09) [GET]
+
+NoMethodError (undefined method `rows' for Matrix:Class):
+  app/models/puzzle.rb:6:in `new_from_arr'
+  app/models/puzzle.rb:20:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (135.8ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:03:11) [GET]
+Rendering plays/new
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]) on line #5 of app/views/plays/new.html.erb:
+2:   <% (1..Puzzle::DIMENSION).each do |i |  %>
+3:     <tr>
+4:       <% (1..Puzzle::DIMENSION).each do |j |  %>
+5:         <td><%= @puzzle.matrix[i,j]%></td>
+6:       <% end %>
+7:     </tr>
+8:   <% end %>
+
+    /usr/lib/ruby/1.8/matrix.rb:265:in `[]'
+    app/views/plays/new.html.erb:5
+    app/views/plays/new.html.erb:4:in `each'
+    app/views/plays/new.html.erb:4
+    app/views/plays/new.html.erb:2:in `each'
+    app/views/plays/new.html.erb:2
+
+Rendered rescues/_trace (211.9ms)
+Rendered rescues/_request_and_response (7.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:03:34) [GET]
+
+NoMethodError (undefined method `rows' for Matrix:Class):
+  app/models/puzzle.rb:6:in `new_from_arr'
+  app/models/puzzle.rb:19:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (102.4ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:03:44) [GET]
+
+NoMethodError (undefined method `rows' for Matrix:Class):
+  app/models/puzzle.rb:6:in `new_from_arr'
+  app/models/puzzle.rb:19:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (98.5ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:03:45) [GET]
+
+NoMethodError (undefined method `rows' for Matrix:Class):
+  app/models/puzzle.rb:6:in `new_from_arr'
+  app/models/puzzle.rb:19:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (245.6ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:03:46) [GET]
+
+NoMethodError (undefined method `rows' for Matrix:Class):
+  app/models/puzzle.rb:6:in `new_from_arr'
+  app/models/puzzle.rb:19:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (122.7ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:05:03) [GET]
+
+NoMethodError (undefined method `rows' for Matrix:Class):
+  app/models/puzzle.rb:8:in `new_from_arr'
+  app/models/puzzle.rb:21:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (121.9ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:05:48) [GET]
+
+NameError (uninitialized constant Matrix):
+  app/models/puzzle.rb:3
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (233.7ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:06:11) [GET]
+
+NameError (uninitialized constant Matrix):
+  app/models/puzzle.rb:3
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (123.4ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:07:03) [GET]
+
+NoMethodError (undefined method `rows' for #<Puzzle:0xb74ad76c>):
+  app/models/puzzle.rb:14:in `new_from_arr'
+  app/models/puzzle.rb:8:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (133.1ms)
+Rendered rescues/_request_and_response (1.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:07:14) [GET]
+
+NameError (uninitialized constant Puzzle::Matrix):
+  app/models/puzzle.rb:14:in `new_from_arr'
+  app/models/puzzle.rb:8:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (239.6ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:07:44) [GET]
+
+NameError (uninitialized constant Puzzle::Matrix):
+  app/models/puzzle.rb:14:in `new_from_arr'
+  app/models/puzzle.rb:8:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (101.8ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:08:52) [GET]
+
+NameError (uninitialized constant Puzzle::Matrix):
+  app/models/puzzle.rb:14:in `new_from_arr'
+  app/models/puzzle.rb:8:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (105.2ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:11:41) [GET]
+
+NameError (uninitialized constant Puzzle::Matrix):
+  app/models/puzzle.rb:14:in `new_from_arr'
+  app/models/puzzle.rb:8:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (118.0ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:13:52) [GET]
+
+NameError (uninitialized constant PlaysController::Matrix):
+  app/controllers/plays_controller.rb:8:in `new'
+
+Rendered rescues/_trace (97.5ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:14:13) [GET]
+
+NameError (uninitialized constant PlaysController::Matrix):
+  app/controllers/plays_controller.rb:8:in `new'
+
+Rendered rescues/_trace (101.5ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:21:34) [GET]
+Rendering plays/new
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]) on line #5 of app/views/plays/new.html.erb:
+2:   <% (1..Puzzle::DIMENSION).each do |i |  %>
+3:     <tr>
+4:       <% (1..Puzzle::DIMENSION).each do |j |  %>
+5:         <td><%= @puzzle.matrix[i,j]%></td>
+6:       <% end %>
+7:     </tr>
+8:   <% end %>
+
+    /usr/lib/ruby/1.8/matrix.rb:265:in `[]'
+    app/views/plays/new.html.erb:5
+    app/views/plays/new.html.erb:4:in `each'
+    app/views/plays/new.html.erb:4
+    app/views/plays/new.html.erb:2:in `each'
+    app/views/plays/new.html.erb:2
+
+Rendered rescues/_trace (197.3ms)
+Rendered rescues/_request_and_response (2.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:21:59) [GET]
+Rendering plays/new
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]) on line #5 of app/views/plays/new.html.erb:
+2:   <% (1..Puzzle::DIMENSION).each do |i |  %>
+3:     <tr>
+4:       <% (1..Puzzle::DIMENSION).each do |j |  %>
+5:         <td><%= @puzzle.matrix[i,j]%></td>
+6:       <% end %>
+7:     </tr>
+8:   <% end %>
+
+    /usr/lib/ruby/1.8/matrix.rb:265:in `[]'
+    app/views/plays/new.html.erb:5
+    app/views/plays/new.html.erb:4:in `each'
+    app/views/plays/new.html.erb:4
+    app/views/plays/new.html.erb:2:in `each'
+    app/views/plays/new.html.erb:2
+
+Rendered rescues/_trace (111.8ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:22:01) [GET]
+Rendering plays/new
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]) on line #5 of app/views/plays/new.html.erb:
+2:   <% (1..Puzzle::DIMENSION).each do |i |  %>
+3:     <tr>
+4:       <% (1..Puzzle::DIMENSION).each do |j |  %>
+5:         <td><%= @puzzle.matrix[i,j]%></td>
+6:       <% end %>
+7:     </tr>
+8:   <% end %>
+
+    /usr/lib/ruby/1.8/matrix.rb:265:in `[]'
+    app/views/plays/new.html.erb:5
+    app/views/plays/new.html.erb:4:in `each'
+    app/views/plays/new.html.erb:4
+    app/views/plays/new.html.erb:2:in `each'
+    app/views/plays/new.html.erb:2
+
+Rendered rescues/_trace (261.9ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:22:33) [GET]
+Rendering plays/new
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]) on line #5 of app/views/plays/new.html.erb:
+2:   <% (1..Puzzle::DIMENSION).each do |i |  %>
+3:     <tr>
+4:       <% (1..Puzzle::DIMENSION).each do |j |  %>
+5:         <td><%= @puzzle.matrix[i,j]%></td>
+6:       <% end %>
+7:     </tr>
+8:   <% end %>
+
+    /usr/lib/ruby/1.8/matrix.rb:265:in `[]'
+    app/views/plays/new.html.erb:5
+    app/views/plays/new.html.erb:4:in `each'
+    app/views/plays/new.html.erb:4
+    app/views/plays/new.html.erb:2:in `each'
+    app/views/plays/new.html.erb:2
+
+Rendered rescues/_trace (123.0ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:24:07) [GET]
+Rendering plays/new
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]) on line #5 of app/views/plays/new.html.erb:
+2:   <% (1..Puzzle::DIMENSION).each do |i |  %>
+3:     <tr>
+4:       <% (1..Puzzle::DIMENSION).each do |j |  %>
+5:         <td><%= @puzzle.matrix[i,j]%></td>
+6:       <% end %>
+7:     </tr>
+8:   <% end %>
+
+    /usr/lib/ruby/1.8/matrix.rb:265:in `[]'
+    app/views/plays/new.html.erb:5
+    app/views/plays/new.html.erb:4:in `each'
+    app/views/plays/new.html.erb:4
+    app/views/plays/new.html.erb:2:in `each'
+    app/views/plays/new.html.erb:2
+
+Rendered rescues/_trace (116.5ms)
+Rendered rescues/_request_and_response (4.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:25:13) [GET]
+Rendering plays/new
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]) on line #5 of app/views/plays/new.html.erb:
+2:   <% (1..Puzzle::DIMENSION).each do |i |  %>
+3:     <tr>
+4:       <% (1..Puzzle::DIMENSION).each do |j |  %>
+5:         <td><%= @puzzle.matrix[i,j]%></td>
+6:       <% end %>
+7:     </tr>
+8:   <% end %>
+
+    /usr/lib/ruby/1.8/matrix.rb:265:in `[]'
+    app/views/plays/new.html.erb:5
+    app/views/plays/new.html.erb:4:in `each'
+    app/views/plays/new.html.erb:4
+    app/views/plays/new.html.erb:2:in `each'
+    app/views/plays/new.html.erb:2
+
+Rendered rescues/_trace (130.4ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:26:38) [GET]
+Rendering plays/new
+Completed in 88ms (View: 23 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:27:18) [GET]
+Rendering plays/new
+Completed in 112ms (View: 46 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:27:44) [GET]
+Rendering plays/new
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]) on line #5 of app/views/plays/new.html.erb:
+2:   <% (1..Puzzle::DIMENSION).each do |i |  %>
+3:     <tr>
+4:       <% (1..Puzzle::DIMENSION).each do |j |  %>
+5:         <td><%= @puzzle.matrix[i, j]%></td>
+6:       <% end %>
+7:     </tr>
+8:   <% end %>
+
+    /usr/lib/ruby/1.8/matrix.rb:265:in `[]'
+    app/views/plays/new.html.erb:5
+    app/views/plays/new.html.erb:4:in `each'
+    app/views/plays/new.html.erb:4
+    app/views/plays/new.html.erb:2:in `each'
+    app/views/plays/new.html.erb:2
+
+Rendered rescues/_trace (244.1ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:28:54) [GET]
+Rendering plays/new
+Completed in 93ms (View: 46 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:29:16) [GET]
+Rendering plays/new
+Completed in 60ms (View: 21 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:30:50) [GET]
+Rendering plays/new
+
+ActionView::TemplateError (undefined method `i' for #<ActionView::Base:0xb771f89c>) on line #5 of app/views/plays/new.html.erb:
+2:   <% (1..Puzzle::DIMENSION).each do |i |  %>
+3:     <tr>
+4:       <% (1..Puzzle::DIMENSION).each do |j |  %>
+5:         <td><%= i j%></td>
+6:       <% end %>
+7:     </tr>
+8:   <% end %>
+
+    app/views/plays/new.html.erb:5
+    app/views/plays/new.html.erb:4:in `each'
+    app/views/plays/new.html.erb:4
+    app/views/plays/new.html.erb:2:in `each'
+    app/views/plays/new.html.erb:2
+
+Rendered rescues/_trace (112.1ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:32:39) [GET]
+Rendering plays/new
+Completed in 66ms (View: 10 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:32:56) [GET]
+Rendering plays/new
+Completed in 65ms (View: 7 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:33:17) [GET]
+Rendering plays/new
+Completed in 65ms (View: 27 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:33:27) [GET]
+Rendering plays/new
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]) on line #5 of app/views/plays/new.html.erb:
+2:   <% (1..Puzzle::DIMENSION).each do |i|  %>
+3:     <tr>
+4:       <% (1..Puzzle::DIMENSION).each do |j|  %>
+5:         <td><%= @puzzle.matrix[i, j] %></td>
+6:       <% end %>
+7:     </tr>
+8:   <% end %>
+
+    /usr/lib/ruby/1.8/matrix.rb:265:in `[]'
+    app/views/plays/new.html.erb:5
+    app/views/plays/new.html.erb:4:in `each'
+    app/views/plays/new.html.erb:4
+    app/views/plays/new.html.erb:2:in `each'
+    app/views/plays/new.html.erb:2
+
+Rendered rescues/_trace (125.5ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:33:52) [GET]
+Rendering plays/new
+Completed in 62ms (View: 22 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:35:08) [GET]
+Rendering plays/new
+Completed in 69ms (View: 6 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:35:11) [GET]
+Rendering plays/new
+Completed in 78ms (View: 2 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:35:22) [GET]
+Rendering plays/new
+Completed in 69ms (View: 10 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:36:15) [GET]
+Rendering plays/new
+Completed in 66ms (View: 1 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:36:17) [GET]
+Rendering plays/new
+Completed in 95ms (View: 2 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:36:36) [GET]
+
+NoMethodError (undefined method `shift' for #<Enumerable::Enumerator:0xb7bb111c>):
+  app/models/puzzle.rb:16:in `new_from_arr'
+  app/models/puzzle.rb:16:in `times'
+  app/models/puzzle.rb:16:in `new_from_arr'
+  app/models/puzzle.rb:10:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (199.9ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:37:21) [GET]
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/models/puzzle.rb:9:in `sort_by'
+  app/models/puzzle.rb:9:in `initialize'
+  app/controllers/plays_controller.rb:5:in `new'
+  app/controllers/plays_controller.rb:5:in `new'
+
+Rendered rescues/_trace (104.7ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:37:43) [GET]
+Rendering plays/new
+Completed in 74ms (View: 3 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:37:46) [GET]
+Rendering plays/new
+Completed in 89ms (View: 3 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:37:47) [GET]
+Rendering plays/new
+Completed in 44ms (View: 2 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:37:48) [GET]
+Rendering plays/new
+Completed in 59ms (View: 20 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:37:48) [GET]
+Rendering plays/new
+Completed in 71ms (View: 3 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:37:49) [GET]
+Rendering plays/new
+Completed in 67ms (View: 2 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:37:50) [GET]
+Rendering plays/new
+Completed in 41ms (View: 2 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:37:50) [GET]
+Rendering plays/new
+Completed in 76ms (View: 29 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:37:51) [GET]
+Rendering plays/new
+Completed in 56ms (View: 2 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:37:51) [GET]
+Rendering plays/new
+Completed in 42ms (View: 2 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:37:52) [GET]
+Rendering plays/new
+Completed in 64ms (View: 24 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:38:27) [GET]
+Rendering plays/new
+Completed in 68ms (View: 2 | 200 OK [http://localhost/plays/new]
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 13:38:48) [GET]
+Rendering plays/new
+Completed in 69ms (View: 3 | 200 OK [http://localhost/plays/new]
