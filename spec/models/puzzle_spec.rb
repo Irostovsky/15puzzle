@@ -12,4 +12,11 @@ describe Puzzle do
       matrix.should_not == Matrix[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
     end
   end
+
+  describe '#zero_pos' do
+    it "should return array with zero indexes" do
+      puzzle = Puzzle.new
+      puzzle.zero_pos.should == [3, 3]
+    end
+  end
 end
