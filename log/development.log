@@ -96,3 +96,8 @@ Completed in 135ms (View: 116, DB: 0) | 200 OK [http://localhost/]
   [4;35;1mSQL (0.6ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
   [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW TABLES[0m
   [4;35;1mSQL (0.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+
+
+Processing PlaysController#new (for 127.0.0.1 at 2009-09-05 11:03:23) [GET]
+Rendering plays/new
+Completed in 25ms (View: 13 | 200 OK [http://localhost/]
