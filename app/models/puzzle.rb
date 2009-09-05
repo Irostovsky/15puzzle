@@ -13,7 +13,7 @@ class Puzzle
 
   def new_from_arr(arr, dimension)
     prepared_rows = []
-    dimension.times{ prepared_rows << arr.shift(dimension) }
+    dimension.times{ prepared_rows << arr.slice!(0, dimension) }
     Matrix.rows(prepared_rows)
   end
 
