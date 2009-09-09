@@ -17,13 +17,16 @@ class Puzzle
 
   def can_move?(value)
     value_pos = @matrix.pos(value)
-    value_pos[0] == zero_pos[0] || value_pos[1] == zero_pos[1]
+    (value_pos[0] == zero_pos[0]) || (value_pos[1] == zero_pos[1])
   end
 
   def zero_pos
     @matrix.pos(0)
   end
 
+  def completed?
+    @matrix == Puzzle.new.matrix
+  end
 
 end
 
@@ -66,7 +69,8 @@ class Matrix
   end
 
   def scroll_row(row, from_col, to_col)
-    @rows[row].scroll(from_col, to_col)
+#     @rows[row].scroll(from_col, to_col)
+    @rows[row] = @rows[row].to_a.scroll(from_col, to_col)
   end
 
 end

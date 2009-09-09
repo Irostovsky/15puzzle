@@ -1,3 +1,7 @@
+
+<div><%= flash[:notice] %></div>
+<div><%= flash[:error] %></div>
+<%= link_to "Start new game", new_plays_path %>
 <table>
   <% (1..Puzzle::DIMENSION).each do |i|  %>
     <tr>

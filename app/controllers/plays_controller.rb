@@ -7,7 +7,7 @@ class PlaysController < ApplicationController
   end
 
   def edit
-    move_param = params[:move_param]
+    move_param = params[:p].to_i
     @puzzle = session[:puzzle]
     if @puzzle.can_move?(move_param)
       @puzzle.move! move_param

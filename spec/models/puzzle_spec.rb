@@ -94,13 +94,31 @@ describe Puzzle do
 
   end
 
+  context 'Matrix' do
+    describe '#pos' do
+      it "should return array with indexs of element" do
+        matrix = Matrix[[1, 2, 3], [4, 5, 6]]
+        matrix.pos(3).should ==[0, 2]
+      end
+    end
 
-#   describe 'Matrix#[i, j]=' do
-#     it "should set value to matrix " do
-#       matrix = Matrix[[1, 2, 3], [4, 5, 6]]
-#       matrix[0, 0] = 0
-#       matrix[0, 0] == 0
-#     end
-#   end
+    describe '#scroll_row' do
+      it "should return scrolled matrix" do
+        matrix = Matrix[[1, 2, 3], [4, 5, 6]]
+        matrix.scroll_row(0, 0, 2)
+        matrix.should == Matrix[[2, 3, 1], [4, 5, 6]]
+      end
+      it "should return scrolled matrix 3" do
+        matrix = Matrix[[1, 2, 3], [4, 5, 6]]
+        matrix.scroll_row(0, 2, 0)
+        matrix.should == Matrix[[3, 1, 2], [4, 5, 6]]
+      end
+      it "should return scrolled matrix 2" do
+        matrix = Matrix[[1, 2, 3], [4, 5, 6]]
+        matrix.scroll_row(1, 1, 2)
+        matrix.should == Matrix[[1, 2, 3], [4, 6, 5]]
+      end
+    end
+  end
 
 end
