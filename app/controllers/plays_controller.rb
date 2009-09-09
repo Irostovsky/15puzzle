@@ -9,7 +9,7 @@ class PlaysController < ApplicationController
   def edit
     move_param = params[:move_param]
     @puzzle = session[:puzzle]
-    if @puzzle.can_move?
+    if @puzzle.can_move?(move_param)
       @puzzle.move! move_param
       session[:puzzle] = @puzzle
       flash[:notice] = 'You are win!!!' if @puzzle.completed?

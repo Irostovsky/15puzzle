@@ -5,7 +5,7 @@
         <td>
           <% value, zero_pos = @puzzle.matrix[i-1, j-1], @puzzle.zero_pos%>
           <% if ((i-1 == zero_pos[0]) || (j-1 == zero_pos[1])) && ([i-1, j-1] != zero_pos)  %>
-            <%= link_to value, edit_plays_path %>
+            <%= link_to value, edit_plays_path(:p => value) %>
           <% else %>
             <%= value %>
           <% end %>
