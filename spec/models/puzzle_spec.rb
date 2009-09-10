@@ -13,6 +13,17 @@ describe Puzzle do
     end
   end
 
+  describe '#completed?' do
+    it "should return true when matrix is inited" do
+      Puzzle.new.completed?.should be_true
+    end
+
+    it "should return false when matrix is inited" do
+      Puzzle.new(true).completed?.should be_false
+    end
+
+  end
+
   describe '#zero_pos' do
     it "should return array with zero indexes" do
       puzzle = Puzzle.new
@@ -89,9 +100,6 @@ describe Puzzle do
       arr = [1, 2, 3, 0]
       arr.scroll(3, 1).should == [1, 0, 2, 3]
     end
-
-
-
   end
 
   context 'Matrix' do

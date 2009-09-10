@@ -48,7 +48,7 @@ class Matrix
       arr_t = self.t
       arr_t.scroll_row(from_col, from_row, to_row)
       arr_t = arr_t.t
-      @rows = arr_t.row_vectors
+      @rows = arr_t.to_a
     end
   end
 
@@ -69,7 +69,6 @@ class Matrix
   end
 
   def scroll_row(row, from_col, to_col)
-#     @rows[row].scroll(from_col, to_col)
     @rows[row] = @rows[row].to_a.scroll(from_col, to_col)
   end
 
