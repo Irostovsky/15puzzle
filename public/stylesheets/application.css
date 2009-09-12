@@ -21,6 +21,10 @@ table{
   margin: 20px 0;
 }
 
+table td.clickable:hover{
+  background-color: yellow;
+}
+
 #error{
   color:red;
 }

@@ -1,18 +1,15 @@
-
-
 <div id='notice'><%= flash[:notice] %></div>
 <div id='error'><%= flash[:error] %></div>
 <%= link_to "Start new game", new_plays_path %>
 <table>
-  <% (1..Puzzle::DIMENSION).each do |i|  %>
+  <% @puzzle.matrix.to_a.map do |row |%>
     <tr>
-      <% (1..Puzzle::DIMENSION).each do |j|  %>
-        <td>
-          <% value, zero_pos = @puzzle.matrix[i-1, j-1], @puzzle.zero_pos%>
-          <% if ((i-1 == zero_pos[0]) || (j-1 == zero_pos[1])) && ([i-1, j-1] != zero_pos)  %>
-            <%= link_to value, edit_plays_path(:p => value) %>
+      <% row.map do |item|  %>
+        <td class = <%= 'clickable' if clickable?(item) %> >
+          <% if clickable? item %>
+            <%= link_to item, edit_plays_path(:p => item) %>
           <% else %>
-            <%= value %>
+            <%= item %>
           <% end %>
         </td>
       <% end %>

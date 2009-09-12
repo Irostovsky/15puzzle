@@ -1,6 +1,5 @@
 class PlaysController < ApplicationController
 
-
   def new
     @puzzle = Puzzle.new(true)
     session[:puzzle] = @puzzle
@@ -18,6 +17,5 @@ class PlaysController < ApplicationController
     end
     render :new
   end
-
 
 end
