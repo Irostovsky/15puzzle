@@ -74,13 +74,11 @@ class Matrix
   end
 
   def pos(value)
-    res = []
-    (1..row_size).each do |i|
-      (1..column_size).each do |j|
-        res = [i-1, j-1] if self[i-1, j-1] == value
-       end
+    @rows.map do |row|
+      row.map do |item|
+        return [@rows.index(row), row.index(item)] if value == item
+      end
     end
-    res
   end
 
   def scroll_row(row, from_col, to_col)
