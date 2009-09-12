@@ -28,9 +28,24 @@ class Puzzle
     @matrix == Puzzle.new.matrix
   end
 
+  def solvable?
+     @matrix.solvable?
+  end
+
 end
 
 class Matrix
+
+  def solvable?
+    sum = self.pos(0)[0] + 1
+    m_arr = self.to_a.flatten
+    m_arr.delete(0)
+    m_arr.map do |item|
+      index = m_arr.index(item)
+      sum += m_arr[index+1..-1].select{ |sub_item| sub_item < item}.size
+    end
+    (sum % 2).zero?
+  end
 
   def []=(i, j, value)
     @rows[i][j] = value

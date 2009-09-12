@@ -127,6 +127,17 @@ describe Puzzle do
         matrix.should == Matrix[[1, 2, 3], [4, 6, 5]]
       end
     end
+
+    describe '#solvable' do
+      it 'should return true for solvable matrix' do
+        Puzzle.new.matrix.solvable?.should be_true
+      end
+
+      it 'should return false for not solvable matrix' do
+        m = Matrix[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 15, 14, 0]]
+        m.solvable?.should be_false
+      end
+    end
   end
 
 end
