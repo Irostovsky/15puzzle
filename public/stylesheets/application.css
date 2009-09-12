@@ -4,14 +4,15 @@ body{
   color: black;
   font-weight: bold;
 }
+
 a{
   color: blue;
 }
 
-table tr td {
+table tr td{
+  border: 1px solid black;
   width: 50px;
   height: 50px;
-  border: 1px solid black;
 }
 
 table{
