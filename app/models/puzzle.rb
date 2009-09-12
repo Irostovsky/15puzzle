@@ -83,15 +83,14 @@ class Matrix
 end
 
 class Array
+
   def scroll(window_index, target_index)
     indexes = [window_index, target_index]
     arr = self[indexes.min..indexes.max]
     if window_index < target_index
       arr << arr.shift
     else
-      arr.reverse!
-      arr << arr.shift
-      arr.reverse!
+      (arr.reverse! << arr.shift).reverse!
     end
     self[indexes.min..indexes.max] = arr
     self
