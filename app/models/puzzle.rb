@@ -12,12 +12,12 @@ class Puzzle
   end
 
   def move!(value)
-    @matrix.move!(0, value)
+    @matrix.move!(0, value.to_i)
   end
 
   def can_move?(value)
-    value_pos = @matrix.pos(value)
-    (value_pos[0] == zero_pos[0]) || (value_pos[1] == zero_pos[1])
+    value_pos = @matrix.pos(value.to_i)
+    ((value_pos[0] == zero_pos[0]) || (value_pos[1] == zero_pos[1])) && (value_pos != zero_pos)
   end
 
   def zero_pos
