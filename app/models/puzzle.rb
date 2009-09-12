@@ -47,10 +47,6 @@ class Matrix
     (sum % 2).zero?
   end
 
-  def []=(i, j, value)
-    @rows[i][j] = value
-  end
-
   def move!(from, to)
     from_row, from_col, to_row, to_col = [pos(from), pos(to)].flatten
     if from_row == to_row
