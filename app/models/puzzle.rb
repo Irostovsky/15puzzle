@@ -52,25 +52,19 @@ class Matrix
   end
 
   def move!(from, to)
-    from_row = pos(from)[0]
-    from_col = pos(from)[1]
-    to_row = pos(to)[0]
-    to_col = pos(to)[1]
+    from_row, from_col, to_row, to_col = [pos(from), pos(to)].flatten
     if from_row == to_row
       self.scroll_row(from_row, from_col, to_col)
     end
     if from_col == to_col
-      arr_t = self.t
-      arr_t.scroll_row(from_col, from_row, to_row)
-      arr_t = arr_t.t
-      @rows = arr_t.to_a
+      @rows = self.t.scroll_row(from_col, from_row, to_row).t.to_a
     end
   end
 
   def self.new_from_arr(arr, dimension)
     prepared_rows = []
     dimension.times{ prepared_rows << arr.slice!(0, dimension) }
-    Matrix.rows(prepared_rows)
+    self.rows(prepared_rows)
   end
 
   def pos(value)
@@ -83,6 +77,7 @@ class Matrix
 
   def scroll_row(row, from_col, to_col)
     @rows[row] = @rows[row].scroll(from_col, to_col)
+    self
   end
 
 end
