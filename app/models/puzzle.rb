@@ -2,14 +2,12 @@ class Puzzle
 
   require 'mathn'
 
-  attr_accessor :matrix
-
+  attr_accessor :state
+  
   DIMENSION = 4
 
   def initialize(random = false)
-    arr = (1..15).to_a << 0
-    arr = arr.sort_by{rand} if random
-    @matrix = Matrix.new_from_arr(arr, DIMENSION)
+    @state = (1..15).to_a.sort{ |a, b| random ? rand : 0 } << 0
   end
 
   def move!(value)
