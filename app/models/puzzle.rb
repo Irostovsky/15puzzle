@@ -10,6 +10,10 @@ class Puzzle
     @state = (1..15).to_a.sort{ |a, b| random ? rand : 0 } << 0
   end
 
+  def matrix
+      
+  end  
+
   def move!(value)
     @matrix.move!(0, value.to_i)
   end
