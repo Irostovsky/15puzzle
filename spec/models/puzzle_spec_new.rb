@@ -13,11 +13,12 @@ describe Puzzle do
 
   describe '#matrix' do
     it 'should return matrix view of state' do
-       Puzzle.new.matrix.should == Matrix[
-        [1,2,3,4],
-        [5,6,7,8],
-        [9,10,11,12],
-        [13,14,15,0]
+       Puzzle.new.matrix.should ==
+         [
+          [1, 2, 3, 4],
+          [5, 6, 7, 8],
+          [9, 10, 11, 12],
+          [13, 14, 15, 0]
        ] 
     end  
   end

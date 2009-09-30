@@ -1,6 +1,7 @@
 class Puzzle
 
   require 'mathn'
+  require 'enumerator'
 
   attr_accessor :state
   
@@ -11,7 +12,9 @@ class Puzzle
   end
 
   def matrix
-      
+    matrix = []
+    @state.each_slice(@state.length ** 0.5){|arr| matrix << arr }
+    matrix
   end  
 
   def move!(value)
