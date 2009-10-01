@@ -26,7 +26,7 @@ class Puzzle
   end
 
   def dimension
-    @state.length ** 0.5
+    (@state.length ** 0.5).to_i
   end
 
   def x(value)
@@ -34,7 +34,9 @@ class Puzzle
   end  
 
   def y(value)
-    ((@state.index(value) + 1)  / dimension) + 1
+    p @state.index value
+    p dimension
+    @state.index(value)  / dimension
   end  
 
   def zero_pos
