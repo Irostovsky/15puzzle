@@ -22,5 +22,43 @@ describe Puzzle do
        ] 
     end  
   end
+  
+  describe '#can_move?' do
+    it 'should return true if value in the same ROW as 0' do
+      Puzzle.new.can_move?(13).should be_true
+    end
 
+    it 'should return true if value in the same COL as 0' do
+      Puzzle.new.can_move?(4).should be_true
+    end
+
+    it 'should return false if value NOT in the same ROW or COL as 0' do
+      Puzzle.new.can_move?(1).should be_false
+    end
+
+    it 'should return false if value is 0' do
+      Puzzle.new.can_move?(0).should be_false
+    end
+
+    it 'should return false if value is not in matrix' do
+      Puzzle.new.can_move?(123).should be_false
+    end
+
+ end  
+
+  describe '#x' do
+    it 'should return x index in matrix' do
+      Puzzle.new.x(1).should == 1
+      Puzzle.new.x(0).should == 4
+      Puzzle.new.x(7).should == 3
+    end  
+  end  
+
+  describe '#y' do
+    it 'should return y index in matrix' do
+      Puzzle.new.y(1).should == 1
+      Puzzle.new.y(0).should == 4
+      Puzzle.new.y(7).should == 2
+    end  
+  end  
 end 

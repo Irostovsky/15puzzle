@@ -22,9 +22,20 @@ class Puzzle
   end
 
   def can_move?(value)
-    value_pos = @matrix.pos(value.to_i)
-    ((value_pos[0] == zero_pos[0]) || (value_pos[1] == zero_pos[1])) && (value_pos != zero_pos)
+    !value.zero? && (x(value) == x(0)) || (y(value) == y(0)) 
   end
+
+  def dimension
+    @state.length ** 0.5
+  end
+
+  def x(value)
+    @state.length % dimension
+  end  
+
+  def y(value)
+    ((@state.index(value) + 1)  / dimension) + 1
+  end  
 
   def zero_pos
     @matrix.pos(0)
