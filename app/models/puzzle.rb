@@ -30,13 +30,11 @@ class Puzzle
   end
 
   def x(value)
-    @state.length % dimension
+    @state.index(value).divmod(dimension)[1]
   end  
 
   def y(value)
-    p @state.index value
-    p dimension
-    @state.index(value)  / dimension
+    @state.index(value).divmod(dimension)[0]
   end  
 
   def zero_pos
