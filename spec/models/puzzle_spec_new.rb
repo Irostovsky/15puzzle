@@ -22,7 +22,7 @@ describe Puzzle do
        ] 
     end  
   end
-=begin  
+
   describe '#can_move?' do
     it 'should return true if value in the same ROW as 0' do
       Puzzle.new.can_move?(13).should be_true
@@ -45,7 +45,7 @@ describe Puzzle do
     end
 
  end  
-=end
+
   describe '#x' do
     it 'should return x index in matrix' do
       Puzzle.new.x(1).should == 0

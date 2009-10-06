@@ -22,7 +22,8 @@ class Puzzle
   end
 
   def can_move?(value)
-    !value.zero? && (x(value) == x(0)) || (y(value) == y(0)) 
+    return false unless @state.index(value)
+    ((x(value) == x(0)) || (y(value) == y(0))) && !value.zero?
   end
 
   def dimension
