@@ -9,7 +9,7 @@
           <% if clickable? item %>
             <%= link_to item, edit_plays_path(:p => item) %>
           <% else %>
-            <%= item %>
+            <%= item unless item.zero?  %>
           <% end %>
         </td>
       <% end %>
