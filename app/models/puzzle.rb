@@ -11,14 +11,18 @@ class Puzzle
     @state = (1..15).to_a.sort{ |a, b| random ? rand : 0 } << 0
   end
 
-  def matrix
+  def matrix(array = @state)
     matrix = []
-    @state.each_slice(@state.length ** 0.5){|arr| matrix << arr }
+    array.each_slice(array.length ** 0.5){|arr| matrix << arr }
     matrix
   end  
 
   def move!(value)
-    @matrix.move!(0, value.to_i)
+    if y(value) == y(0)
+      @state = move_in_row(@state, value)
+    else
+      @state = matrix(move_in_row(matrix.transpose.flatten, value)).transpose.flatten
+    end  
   end
 
   def can_move?(value)
@@ -38,76 +42,17 @@ class Puzzle
     @state.index(value).divmod(dimension)[0]
   end  
 
-  def zero_pos
-    @matrix.pos(0)
-  end
-
   def completed?
-    @matrix == Puzzle.new.matrix
+    @state == Puzzle.new.state
   end
 
-  def solvable?
-     @matrix.solvable?
-  end
+  private
 
-end
-
-class Matrix
-
-  def solvable?
-    sum = self.pos(0)[0] + 1
-    m_arr = self.to_a.flatten
-    m_arr.delete(0)
-    m_arr.map do |item|
-      index = m_arr.index(item)
-      sum += m_arr[index+1..-1].select{ |sub_item| sub_item < item}.size
-    end
-    (sum % 2).zero?
-  end
-
-  def move!(from, to)
-    from_row, from_col, to_row, to_col = [pos(from), pos(to)].flatten
-    if from_row == to_row
-      self.scroll_row(from_row, from_col, to_col)
-    end
-    if from_col == to_col
-      @rows = self.t.scroll_row(from_col, from_row, to_row).t.to_a
-    end
-  end
-
-  def self.new_from_arr(arr, dimension)
-    prepared_rows = []
-    dimension.times{ prepared_rows << arr.slice!(0, dimension) }
-    self.rows(prepared_rows)
-  end
-
-  def pos(value)
-    @rows.map do |row|
-      row.map do |item|
-        return [@rows.index(row), row.index(item)] if value == item
-      end
-    end
-  end
-
-  def scroll_row(row, from_col, to_col)
-    @rows[row] = @rows[row].scroll(from_col, to_col)
-    self
-  end
-
-end
-
-class Array
-
-  def scroll(window_index, target_index)
-    indexes = [window_index, target_index]
-    arr = self[indexes.min..indexes.max]
-    if window_index < target_index
-      arr << arr.shift
-    else
-      (arr.reverse! << arr.shift).reverse!
-    end
-    self[indexes.min..indexes.max] = arr
-    self
-  end
+  def move_in_row(array, value)
+    value_index = array.index value
+    array.delete 0
+    array.insert value_index, 0
+    array
+  end  
 
 end

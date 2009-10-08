@@ -61,4 +61,29 @@ describe Puzzle do
       Puzzle.new.y(7).should == 1
     end  
   end  
+
+  describe '#move!' do
+    it 'should move in 1 row' do
+      puzzle = Puzzle.new
+      puzzle.move!(14)
+      puzzle.state.should == (1..13).to_a << 0 << 14 << 15
+    end  
+
+    it 'should move in 1 col' do
+      puzzle = Puzzle.new
+      puzzle.move!(8)
+      puzzle.state.should == [1,2,3,4,5,6,7,0,9,10,11,8,13,14,15,12]
+    end  
+  end  
+
+  describe '#completed?' do
+    it 'should be completed' do
+      Puzzle.new.completed?.should be_true
+    end  
+    it 'should not be completed' do
+      puzzle = Puzzle.new
+      puzzle.move!(8)
+      puzzle.completed?.should be_false
+    end  
+  end  
 end 
