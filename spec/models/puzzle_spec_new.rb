@@ -9,6 +9,9 @@ describe Puzzle do
      it 'should return puzzle with not new state' do
       Puzzle.new(true).state.should_not == (1..15).to_a << 0
     end  
+     it 'should return random puzzle with not new state' do
+      Puzzle.new(true).state.should_not ==  Puzzle.new(true).state
+     end  
   end
 
   describe '#matrix' do

@@ -8,7 +8,7 @@ class Puzzle
   DIMENSION = 4
 
   def initialize(random = false)
-    @state = (1..15).to_a.sort{ |a, b| random ? rand : 0 } << 0
+    @state = ((1..15).to_a << 0).sort_by{ |a| random ? rand : 0 }
   end
 
   def matrix(array = @state)
