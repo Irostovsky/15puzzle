@@ -5,10 +5,10 @@ class Puzzle
 
   attr_accessor :state
   
-  DIMENSION = 4
-
-  def initialize(random = false)
-    @state = ((1..(DIMENSION ** 2)-1).to_a << 0).sort_by{ |a| random ? rand : 0 }
+  def initialize(opts = {})
+    options = {:random => false, :dim => 4}
+    options.merge!(opts){|k, h1, h2| (k == :dim) && h2.zero? ? h1 : h2}
+    @state = ((1..(options[:dim].to_i ** 2)-1).to_a << 0).sort_by{ |a| options[:random] ? rand : 0 }
   end
 
   def matrix(array = @state)

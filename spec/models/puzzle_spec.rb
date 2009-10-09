@@ -7,10 +7,10 @@ describe Puzzle do
       Puzzle.new.state.should == (1..15).to_a << 0
     end  
      it 'should return puzzle with not new state' do
-      Puzzle.new(true).state.should_not == (1..15).to_a << 0
+      Puzzle.new(:random => true).state.should_not == (1..15).to_a << 0
     end  
      it 'should return random puzzle with not new state' do
-      Puzzle.new(true).state.should_not ==  Puzzle.new(true).state
+      Puzzle.new(:random => true).state.should_not ==  Puzzle.new(:random => true).state
      end  
   end
 
