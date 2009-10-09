@@ -3,141 +3,90 @@ require File.expand_path(File.dirname(__FILE__) + '/../../app/models/puzzle.rb')
 describe Puzzle do
 
   describe '#new' do
-    it "should return new inited puzzle with matrix" do
-      matrix = Puzzle.new.matrix
-      matrix.should == Matrix[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
-    end
-    it "should return new random puzzle with matrix" do
-      matrix = Puzzle.new(true).matrix
-      matrix.should_not == Matrix[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
-    end
+    it 'should return puzzle with new state' do
+      Puzzle.new.state.should == (1..15).to_a << 0
+    end  
+     it 'should return puzzle with not new state' do
+      Puzzle.new(true).state.should_not == (1..15).to_a << 0
+    end  
+     it 'should return random puzzle with not new state' do
+      Puzzle.new(true).state.should_not ==  Puzzle.new(true).state
+     end  
   end
 
-  describe '#completed?' do
-    it "should return true when matrix is inited" do
-      Puzzle.new.completed?.should be_true
-    end
-
-    it "should return false when matrix is inited" do
-      Puzzle.new(true).completed?.should be_false
-    end
-
-  end
-
-  describe '#zero_pos' do
-    it "should return array with zero indexes" do
-      puzzle = Puzzle.new
-      puzzle.zero_pos.should == [3, 3]
-    end
+  describe '#matrix' do
+    it 'should return matrix view of state' do
+       Puzzle.new.matrix.should ==
+         [
+          [1, 2, 3, 4],
+          [5, 6, 7, 8],
+          [9, 10, 11, 12],
+          [13, 14, 15, 0]
+       ] 
+    end  
   end
 
   describe '#can_move?' do
-    it "should return false if value is not in line in 0" do
-      puzzle = Puzzle.new
-      puzzle.can_move?(1).should be_false
+    it 'should return true if value in the same ROW as 0' do
+      Puzzle.new.can_move?(13).should be_true
     end
 
-    it "should return true if value is in line in 0" do
-      puzzle = Puzzle.new
-      puzzle.can_move?(15).should be_true
+    it 'should return true if value in the same COL as 0' do
+      Puzzle.new.can_move?(4).should be_true
     end
-  end
+
+    it 'should return false if value NOT in the same ROW or COL as 0' do
+      Puzzle.new.can_move?(1).should be_false
+    end
+
+    it 'should return false if value is 0' do
+      Puzzle.new.can_move?(0).should be_false
+    end
+
+    it 'should return false if value is not in matrix' do
+      Puzzle.new.can_move?(123).should be_false
+    end
+
+ end  
+
+  describe '#x' do
+    it 'should return x index in matrix' do
+      Puzzle.new.x(1).should == 0
+      Puzzle.new.x(0).should == 3
+      Puzzle.new.x(7).should == 2
+    end  
+  end  
+ 
+ describe '#y' do
+    it 'should return y index in matrix' do
+      Puzzle.new.y(1).should == 0
+      Puzzle.new.y(0).should == 3
+      Puzzle.new.y(7).should == 1
+    end  
+  end  
 
   describe '#move!' do
-    it "should move neighboard items" do
-      puzzle = Puzzle.new
-      puzzle.move!(15)
-      puzzle.zero_pos.should == [3, 2]
-      puzzle.matrix.pos(15).should == [3, 3]
-    end
-
-    it "should move any items in one row" do
+    it 'should move in 1 row' do
       puzzle = Puzzle.new
       puzzle.move!(14)
-      puzzle.zero_pos.should == [3, 1]
-      puzzle.matrix.pos(14).should == [3, 2]
-      puzzle.matrix.pos(15).should == [3, 3]
-    end
+      puzzle.state.should == (1..13).to_a << 0 << 14 << 15
+    end  
 
-    it "should move any items in one col" do
+    it 'should move in 1 col' do
       puzzle = Puzzle.new
-      puzzle.move!(4)
-      puzzle.zero_pos.should == [0, 3]
-      puzzle.matrix.pos(4).should == [1, 3]
-      puzzle.matrix.pos(8).should == [2, 3]
-      puzzle.matrix.pos(12).should == [3, 3]
-    end
-  end
+      puzzle.move!(8)
+      puzzle.state.should == [1,2,3,4,5,6,7,0,9,10,11,8,13,14,15,12]
+    end  
+  end  
 
-
-  describe 'Array#scroll' do
-    it "should scroll ended elements" do
-      arr = [1, 2, 3, 4, 5]
-      arr.scroll(0, 4).should == [2, 3, 4, 5, 1]
-    end
-
-    it "should scroll ended elements reverse" do
-      arr = [1, 2, 3, 4, 5]
-      arr.scroll(4, 0).should == [5, 1, 2, 3, 4]
-    end
-
-    it "should scroll elements in center" do
-      arr = [1, 2, 3, 4, 5]
-      arr.scroll(1, 2).should == [1, 3, 2, 4, 5]
-    end
-
-    it "should scroll elements in center when params equals" do
-      arr = [1, 2, 3, 4, 5]
-      arr.scroll(1, 1).should == [1, 2, 3, 4, 5]
-    end
-
-    it "should scroll elements in center when 1 st param > 2 nd" do
-      arr = [1, 2, 3, 4, 5]
-      arr.scroll(2, 1).should == [1, 3, 2, 4, 5]
-    end
-
-    it "should scroll elements in center and in side" do
-      arr = [1, 2, 3, 0]
-      arr.scroll(3, 1).should == [1, 0, 2, 3]
-    end
-  end
-
-  context 'Matrix' do
-    describe '#pos' do
-      it "should return array with indexs of element" do
-        matrix = Matrix[[1, 2, 3], [4, 5, 6]]
-        matrix.pos(3).should ==[0, 2]
-      end
-    end
-
-    describe '#scroll_row' do
-      it "should return scrolled matrix" do
-        matrix = Matrix[[1, 2, 3], [4, 5, 6]]
-        matrix.scroll_row(0, 0, 2)
-        matrix.should == Matrix[[2, 3, 1], [4, 5, 6]]
-      end
-      it "should return scrolled matrix 3" do
-        matrix = Matrix[[1, 2, 3], [4, 5, 6]]
-        matrix.scroll_row(0, 2, 0)
-        matrix.should == Matrix[[3, 1, 2], [4, 5, 6]]
-      end
-      it "should return scrolled matrix 2" do
-        matrix = Matrix[[1, 2, 3], [4, 5, 6]]
-        matrix.scroll_row(1, 1, 2)
-        matrix.should == Matrix[[1, 2, 3], [4, 6, 5]]
-      end
-    end
-
-    describe '#solvable' do
-      it 'should return true for solvable matrix' do
-        Puzzle.new.matrix.solvable?.should be_true
-      end
-
-      it 'should return false for not solvable matrix' do
-        m = Matrix[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 15, 14, 0]]
-        m.solvable?.should be_false
-      end
-    end
-  end
-
-end
+  describe '#completed?' do
+    it 'should be completed' do
+      Puzzle.new.completed?.should be_true
+    end  
+    it 'should not be completed' do
+      puzzle = Puzzle.new
+      puzzle.move!(8)
+      puzzle.completed?.should be_false
+    end  
+  end  
+end 

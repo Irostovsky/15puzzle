@@ -13,7 +13,7 @@ class Puzzle
 
   def matrix(array = @state)
     matrix = []
-    array.each_slice(array.length ** 0.5){|arr| matrix << arr }
+    array.each_slice(dimension array){|arr| matrix << arr }
     matrix
   end  
 
@@ -30,8 +30,8 @@ class Puzzle
     ((x(value) == x(0)) || (y(value) == y(0))) && !value.zero?
   end
 
-  def dimension
-    (@state.length ** 0.5).to_i
+  def dimension(array = @state)
+    (array.length ** 0.5).to_i
   end
 
   def x(value)
