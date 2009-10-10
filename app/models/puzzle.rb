@@ -1,13 +1,12 @@
 class Puzzle
 
-  require 'mathn'
   require 'enumerator'
 
   attr_accessor :state
   
   def initialize(options = {})
     @dimension = options[:dim].to_i > 0 ? options[:dim].to_i : 4
-    @state = ((1..(@dimension ** 2)-1).to_a << 0).sort_by{ |a| options[:random] ? rand : 0 }
+    @state = ((1..(@dimension ** 2) - 1).to_a << 0).sort_by{ |a| options[:random] ? rand : 0 }
   end
 
   def matrix(array = @state)
@@ -32,18 +31,22 @@ class Puzzle
   end
 
   def x(value)
-    @state.index(value).divmod(@dimension)[1]
+   indexes(value)[1]
   end  
 
   def y(value)
-    @state.index(value).divmod(@dimension)[0]
+   indexes(value)[0]
   end  
 
   def completed?
-    @state == Puzzle.new.state
+    @state == Puzzle.new(:dim => @dimension).state
   end
 
   private
+
+  def indexes(value)
+    @state.index(value).divmod(@dimension)
+  end
 
   def move_in_row(array, value)
     value_index = array.index value

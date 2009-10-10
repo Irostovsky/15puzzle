@@ -102,7 +102,7 @@ describe Puzzle do
 
   describe '#completed?' do
     it 'should be completed' do
-      Puzzle.new.completed?.should be_true
+      Puzzle.new(:dim => 7).completed?.should be_true
     end  
     it 'should not be completed' do
       puzzle = Puzzle.new
