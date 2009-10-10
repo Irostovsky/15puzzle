@@ -8,12 +8,13 @@ class Puzzle
   def initialize(opts = {})
     options = {:random => false, :dim => 4}
     options.merge!(opts){|k, h1, h2| (k == :dim) && h2.zero? ? h1 : h2}
-    @state = ((1..(options[:dim].to_i ** 2)-1).to_a << 0).sort_by{ |a| options[:random] ? rand : 0 }
+    @dimension = options[:dim].to_i
+    @state = ((1..(@dimension ** 2)-1).to_a << 0).sort_by{ |a| options[:random] ? rand : 0 }
   end
 
   def matrix(array = @state)
     matrix = []
-    array.each_slice(dimension array){|arr| matrix << arr }
+    array.each_slice(@dimension){|arr| matrix << arr }
     matrix
   end  
 
@@ -30,16 +31,12 @@ class Puzzle
     ((x(value) == x(0)) || (y(value) == y(0))) && !value.zero?
   end
 
-  def dimension(array = @state)
-    (array.length ** 0.5).to_i
-  end
-
   def x(value)
-    @state.index(value).divmod(dimension)[1]
+    @state.index(value).divmod(@dimension)[1]
   end  
 
   def y(value)
-    @state.index(value).divmod(dimension)[0]
+    @state.index(value).divmod(@dimension)[0]
   end  
 
   def completed?
