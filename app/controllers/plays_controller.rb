@@ -1,7 +1,7 @@
 class PlaysController < ApplicationController
 
   def new
-    @puzzle = Puzzle.new(:random => true, :dim => params[:dim].to_i)
+    @puzzle = Puzzle.new(:random => true, :dim => params[:dim])
     session[:puzzle] = @puzzle
   end
 

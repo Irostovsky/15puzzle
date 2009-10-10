@@ -3,15 +3,31 @@ require File.expand_path(File.dirname(__FILE__) + '/../../app/models/puzzle.rb')
 describe Puzzle do
 
   describe '#new' do
+    before :all do
+      @def_state = (1..15).to_a << 0
+    end  
     it 'should return puzzle with new state' do
-      Puzzle.new.state.should == (1..15).to_a << 0
+      Puzzle.new.state.should == @def_state
     end  
-     it 'should return puzzle with not new state' do
-      Puzzle.new(:random => true).state.should_not == (1..15).to_a << 0
+    context 'randomizing state' do
+       it 'should return puzzle with not new state' do
+        Puzzle.new(:random => true).state.should_not == @def_state
+      end  
+       it 'should return random puzzle with not new state' do
+        Puzzle.new(:random => true).state.should_not ==  Puzzle.new(:random => true).state
+       end  
+    end
+    context 'dimension state' do
+      it 'should return default new state when dim=0' do
+        Puzzle.new(:dim => 0).state.should == @def_state
+      end  
+      it "should return default new state when dim='qwerty'" do
+        Puzzle.new(:dim => 'qwerty').state.should == @def_state
+      end  
+      it "should return new state with dim =3  when dim=3" do
+        Puzzle.new(:dim => 3).state.should == (1..8).to_a << 0
+      end  
     end  
-     it 'should return random puzzle with not new state' do
-      Puzzle.new(:random => true).state.should_not ==  Puzzle.new(:random => true).state
-     end  
   end
 
   describe '#matrix' do

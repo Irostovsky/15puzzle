@@ -5,10 +5,8 @@ class Puzzle
 
   attr_accessor :state
   
-  def initialize(opts = {})
-    options = {:random => false, :dim => 4}
-    options.merge!(opts){|k, h1, h2| (k == :dim) && h2.zero? ? h1 : h2}
-    @dimension = options[:dim].to_i
+  def initialize(options = {})
+    @dimension = options[:dim].to_i > 0 ? options[:dim].to_i : 4
     @state = ((1..(@dimension ** 2)-1).to_a << 0).sort_by{ |a| options[:random] ? rand : 0 }
   end
 
