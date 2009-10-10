@@ -3,7 +3,7 @@
 <%= link_to "Start new game(4)", new_plays_path(:dim => 4)%>
 <%= link_to "3", new_plays_path(:dim => 3) %>
 <table>
-  <% @puzzle.matrix.to_a.map do |row |%>
+  <% @puzzle.matrix.map do |row |%>
     <tr>
       <% row.map do |item|  %>
         <td class = <%= 'clickable' if clickable?(item) %> >
