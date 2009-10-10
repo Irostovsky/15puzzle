@@ -5,12 +5,12 @@ describe Puzzle do
   describe '#new' do
     before :all do
       @def_state = (1..15).to_a << 0
-    end  
+    end 
     it 'should return puzzle with new state' do
       Puzzle.new.state.should == @def_state
     end  
     context 'randomizing state' do
-       it 'should return puzzle with not new state' do
+      it 'should return puzzle with not new state' do
         Puzzle.new(:random => true).state.should_not == @def_state
       end  
        it 'should return random puzzle with not new state' do
@@ -46,23 +46,24 @@ describe Puzzle do
     it 'should return true if value in the same ROW as 0' do
       Puzzle.new.can_move?(13).should be_true
     end
-
+    it 'should return true if value in the same ROW as 0 and string' do
+      Puzzle.new.can_move?('13').should be_true
+    end
     it 'should return true if value in the same COL as 0' do
       Puzzle.new.can_move?(4).should be_true
     end
-
     it 'should return false if value NOT in the same ROW or COL as 0' do
       Puzzle.new.can_move?(1).should be_false
     end
-
     it 'should return false if value is 0' do
       Puzzle.new.can_move?(0).should be_false
     end
-
     it 'should return false if value is not in matrix' do
       Puzzle.new.can_move?(123).should be_false
     end
-
+    it 'should return false if value is a string' do
+      Puzzle.new.can_move?('123').should be_false
+    end
  end  
 
   describe '#x' do
@@ -87,11 +88,15 @@ describe Puzzle do
       puzzle.move!(14)
       puzzle.state.should == (1..13).to_a << 0 << 14 << 15
     end  
-
     it 'should move in 1 col' do
       puzzle = Puzzle.new
       puzzle.move!(8)
       puzzle.state.should == [1,2,3,4,5,6,7,0,9,10,11,8,13,14,15,12]
+    end  
+    it 'should move  when value is string' do
+      puzzle = Puzzle.new
+      puzzle.move!('14')
+      puzzle.state.should == (1..13).to_a << 0 << 14 << 15
     end  
   end  
 

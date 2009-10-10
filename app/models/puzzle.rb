@@ -17,6 +17,7 @@ class Puzzle
   end  
 
   def move!(value)
+    value = value.to_i
     if y(value) == y(0)
       @state = move_in_row(@state, value)
     else
@@ -25,6 +26,7 @@ class Puzzle
   end
 
   def can_move?(value)
+    value = value.to_i
     return false unless @state.index(value)
     ((x(value) == x(0)) || (y(value) == y(0))) && !value.zero?
   end
