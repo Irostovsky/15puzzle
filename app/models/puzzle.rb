@@ -5,8 +5,10 @@ class Puzzle
   attr_accessor :state
   
   def initialize(options = {})
-    @dimension = options[:dim].to_i > 0 ? options[:dim].to_i : 4
-    @state = ((1..(@dimension ** 2) - 1).to_a << 0).sort_by{ |a| options[:random] ? rand : 0 }
+    dim_int = options[:dim].to_i 
+    @dimension = dim_int > 0 ? dim_int : 4
+    arr = (1..(@dimension ** 2) - 1).to_a << 0 
+    @state = arr.sort_by{ |a| options[:random] ? rand : 0 }
   end
 
   def matrix(array = @state)
@@ -20,7 +22,9 @@ class Puzzle
     if y(value) == y(0)
       @state = move_in_row(@state, value)
     else
-      @state = matrix(move_in_row(matrix.transpose.flatten, value)).transpose.flatten
+      transpose_state = matrix.transpose.flatten 
+      state_after_move = move_in_row(transpose_state, value) 
+      @state = matrix(state_after_move).transpose.flatten
     end  
   end
 
