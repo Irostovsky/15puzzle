@@ -8,14 +8,9 @@ class PlaysController < ApplicationController
   def edit
     move_param = params[:p]
     @puzzle = session[:puzzle]
-    flash.clear
-    if @puzzle.can_move?(move_param)
-      @puzzle.move! move_param
-      session[:puzzle] = @puzzle
-      flash[:notice] = 'You are win!!!' if @puzzle.completed?
-    else
-      flash[:error] = "Bad step: #{move_param}"
-    end
+    @puzzle.try_move! move_param
+    flash[:error] = @puzzle.error
+    flash[:notice] = @puzzle.notice
     render :new
   end
 

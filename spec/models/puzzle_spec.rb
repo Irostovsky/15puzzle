@@ -42,56 +42,54 @@ describe Puzzle do
     end  
   end
 
-  describe '#can_move?' do
-    it 'should return true if value in the same ROW as 0' do
-      Puzzle.new.can_move?(13).should be_true
+  describe '#try_move!' do
+    before :all do
+      @def_state = (1..15).to_a << 0
+    end  
+    before :each do
+      @puzzle = Puzzle.new
     end
-    it 'should return true if value in the same ROW as 0 and string' do
-      Puzzle.new.can_move?('13').should be_true
-    end
-    it 'should return true if value in the same COL as 0' do
-      Puzzle.new.can_move?(4).should be_true
-    end
-    it 'should return false if value NOT in the same ROW or COL as 0' do
-      Puzzle.new.can_move?(1).should be_false
-    end
-    it 'should return false if value is 0' do
-      Puzzle.new.can_move?(0).should be_false
-    end
-    it 'should return false if value is not in matrix' do
-      Puzzle.new.can_move?(123).should be_false
-    end
-    it 'should return false if value is a string' do
-      Puzzle.new.can_move?('123').should be_false
-    end
- end  
+    context 'should move' do
+      it 'in one row' do
+        @puzzle.try_move! 14
+        @puzzle.state.should == (1..13).to_a << 0 << 14 << 15
+        @puzzle.error.should be_nil
+        @puzzle.notice.should be_nil
+      end  
+      it 'in one col' do
+        @puzzle.try_move!(8)
+        @puzzle.state.should == [1,2,3,4,5,6,7,0,9,10,11,8,13,14,15,12]
+        @puzzle.error.should be_nil
+        @puzzle.notice.should be_nil
+      end  
+      it 'string number' do
+        @puzzle.try_move! '14'
+        @puzzle.state.should == (1..13).to_a << 0 << 14 << 15
+        @puzzle.error.should be_nil
+        @puzzle.notice.should be_nil
+      end  
+    end  
+    context 'should not move' do
+      it 'not movable value' do
+        @puzzle.try_move! 1
+        @puzzle.state.should == @def_state
+        @puzzle.error.should == 'Not movable value: 1'
+        @puzzle.notice.should be_nil
+      end  
+      it 'not existent value' do
+        @puzzle.try_move! 'bad_value'
+        @puzzle.state.should == @def_state
+        @puzzle.error.should == 'Bad value: bad_value'
+        @puzzle.notice.should be_nil
+      end  
+    end  
+    it 'completed' do
+      @puzzle.try_move! 15
+      @puzzle.try_move! 15
+      @puzzle.state.should == @def_state
+      @puzzle.error.should == nil
+      @puzzle.notice.should == 'You are win for 2 steps'
+    end  
+  end 
 
-  describe '#move!' do
-    it 'should move in 1 row' do
-      puzzle = Puzzle.new
-      puzzle.move!(14)
-      puzzle.state.should == (1..13).to_a << 0 << 14 << 15
-    end  
-    it 'should move in 1 col' do
-      puzzle = Puzzle.new
-      puzzle.move!(8)
-      puzzle.state.should == [1,2,3,4,5,6,7,0,9,10,11,8,13,14,15,12]
-    end  
-    it 'should move  when value is string' do
-      puzzle = Puzzle.new
-      puzzle.move!('14')
-      puzzle.state.should == (1..13).to_a << 0 << 14 << 15
-    end  
-  end  
-
-  describe '#completed?' do
-    it 'should be completed' do
-      Puzzle.new(:dim => 7).completed?.should be_true
-    end  
-    it 'should not be completed' do
-      puzzle = Puzzle.new
-      puzzle.move!(8)
-      puzzle.completed?.should be_false
-    end  
-  end  
 end 
