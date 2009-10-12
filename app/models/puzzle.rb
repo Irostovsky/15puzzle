@@ -19,7 +19,7 @@ class Puzzle
 
   def move!(value)
     value = value.to_i
-    if y(value) == y(0)
+    if one_line?(value)
       @state = move_in_row(@state, value)
     else
       transpose_state = matrix.transpose.flatten 
@@ -31,7 +31,7 @@ class Puzzle
   def can_move?(value)
     value = value.to_i
     return false unless @state.index(value)
-    ((x(value) == x(0)) || (y(value) == y(0))) && !value.zero?
+    (one_line?(value) || one_column?(value)) && !value.zero?
   end
 
   def completed?
@@ -40,6 +40,14 @@ class Puzzle
 
   private
 
+  def one_line?(value)
+    y(value) == y(0)
+  end
+
+  def one_column?(value)
+    x(value) == x(0)
+  end
+    
   def x(value)
     indexes(value)[1]
   end  
