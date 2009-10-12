@@ -66,22 +66,6 @@ describe Puzzle do
     end
  end  
 
-  describe '#x' do
-    it 'should return x index in matrix' do
-      Puzzle.new.x(1).should == 0
-      Puzzle.new.x(0).should == 3
-      Puzzle.new.x(7).should == 2
-    end  
-  end  
- 
- describe '#y' do
-    it 'should return y index in matrix' do
-      Puzzle.new.y(1).should == 0
-      Puzzle.new.y(0).should == 3
-      Puzzle.new.y(7).should == 1
-    end  
-  end  
-
   describe '#move!' do
     it 'should move in 1 row' do
       puzzle = Puzzle.new

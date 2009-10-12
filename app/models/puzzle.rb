@@ -30,19 +30,19 @@ class Puzzle
     ((x(value) == x(0)) || (y(value) == y(0))) && !value.zero?
   end
 
-  def x(value)
-   indexes(value)[1]
-  end  
-
-  def y(value)
-   indexes(value)[0]
-  end  
-
   def completed?
     @state == Puzzle.new(:dim => @dimension).state
   end
 
   private
+
+  def x(value)
+    indexes(value)[1]
+  end  
+
+  def y(value)
+    indexes(value)[0]
+  end  
 
   def indexes(value)
     @state.index(value).divmod(@dimension)
