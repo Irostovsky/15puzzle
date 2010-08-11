@@ -5,21 +5,20 @@ set :scm, :git
 set :deploy_via, :copy
 set :copy_strategy, :export
 
-set :deploy_to, "/data/BuyFolio"
+set :deploy_to, "/var/www/apps/puzzle15"
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+set :deploy_by_user, 'root@'
 
-# If you are using Passenger mod_rails uncomment this:
-# if you're still using the script/reapear helper you will need
-# these http://github.com/rails/irs_process_scripts
+set :use_sudo, true
 
-# namespace :deploy do
-#   task :start {}
-#   task :stop {}
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+set :ip, '173.203.201.62'
+role :app, "#{deploy_by_user}#{ip}"
+role :web, "#{deploy_by_user}#{ip}"
+role :db,  "#{deploy_by_user}#{ip}", :primary => true
+
+namespace :deploy do
+  task :restart, :roles => :app do
+    run "chown  -R www-data #{current_path}/"
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+end
